@@ -20,12 +20,16 @@ def random_row(board):
 def random_col(board):
     return random.randint(0, len(board[0]) - 1)
 while True:
-    ship1_row = random_row(board)
-    ship1_col = random_col(board)
+    ship1_row = random_row(board) + 1
+    ship1_col = random_col(board) + 1
     ship2_row = ship1_row + random.randint(-1,1)
     ship2_col = ship1_col + random.randint(-1,1)
 
-    if ship2_row >= 1 and ship2_row <= 5 and ship2_col >= 1 and ship2_col <= 5:
+    if ship2_row >= 1 and ship2_row <= 5 and ship2_col >= 1 and ship2_col <= 5 and (ship2_row != ship1_row or ship2_col != ship1_col):
+        print(ship1_col)
+        print(ship1_row)
+        print(ship2_col)
+        print(ship2_row)
         break
 
 while True:
