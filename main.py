@@ -6,6 +6,7 @@ skep1träff = False
 skep2träff = False
 badpoints = 0
 storlek = int(input("Hur stor karta vill du spela? (rekomenderat 5 max 61 helst)"))
+pointlimit = storlek*storlek
 
 for x in range(0,storlek):
     board.append(["O"] * storlek)
@@ -28,7 +29,7 @@ while True:
     ship2_row = ship1_row + random.randint(-1,1)
     ship2_col = ship1_col + random.randint(-1,1)
 
-    if ship2_row >= 0 and ship2_row <= len(board) - 1 and ship2_col >= 0 and ship2_col <= len(board) - 1 and (ship2_row != ship1_row or ship2_col != ship1_col):
+    if 0 <= ship2_row < storlek and 0 <= ship2_col < storlek and (ship1_row != ship2_row or ship1_col != ship2_col):
         break
 
 while True:
@@ -53,16 +54,16 @@ while True:
         badpoints += 1
 
     if skep1träff == True and skep2träff == True:
-        if badpoints>=20:
+        if badpoints >= pointlimit*0.8:
             print("Du suger")
             break
-        elif badpoints >= 11:
+        elif badpoints >= pointlimit*0.44:
             print("Du van")
             break
-        elif badpoints == 6 or badpoints ==7:
-            print("SIX or SEVEN")
+        elif badpoints == 6 or badpoints == 7 or badpoints == 67:
+            print("SIX SEVEN")
             break
-        elif badpoints >=4:
+        elif badpoints >=pointlimit*0.16:
             print("Du vinnen, guten pojken")
             break
         else:
