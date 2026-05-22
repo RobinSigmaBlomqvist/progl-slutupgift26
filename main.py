@@ -33,8 +33,16 @@ while True:
         break
 
 while True:
-    guess_row = int(input("Guess Row:"))-1
-    guess_col = int(input("Guess Col:"))-1
+    try:
+        guess_row = int(input("Guess Row:"))-1
+    except(ValueError):
+        print("Wrong input buddy")
+        continue
+    try:
+        guess_col = int(input("Guess Col:"))-1
+    except(ValueError):
+        print("Wrong input buddy")
+        continue
     os.system('cls')
 
     if guess_row == ship1_row and guess_col == ship1_col:
@@ -52,18 +60,18 @@ while True:
         print_board(board)
         print("You missed my battleship!")
         badpoints += 1
-
+    
     if skep1träff == True and skep2träff == True:
-        if badpoints >= pointlimit*0.8:
+        if badpoints >= pointlimit * 0.8:
             print("Du suger")
             break
-        elif badpoints >= pointlimit*0.44:
+        elif badpoints >= pointlimit * 0.44:
             print("Du van")
             break
         elif badpoints == 6 or badpoints == 7 or badpoints == 67:
             print("SIX SEVEN")
             break
-        elif badpoints >=pointlimit*0.16:
+        elif badpoints >=pointlimit * 0.16:
             print("Du vinnen, guten pojken")
             break
         else:
